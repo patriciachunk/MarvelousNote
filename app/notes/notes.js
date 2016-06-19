@@ -9,9 +9,14 @@ angular.module('marvelousnote.notes', [
       url: '/notes',
       templateUrl: 'notes/notes.html',
       controller: 'NotesController'
+    })
+
+
+    .state('notes.form', {
+      url: '/:noteId',
+      templateUrl: 'notes/notes-form.html'
     });
 })
 
-.controller('NotesController', function($scope){
-  $scope.message = 'I <3 angular';
+.controller('NotesController', function(){
 });
