@@ -36,6 +36,6 @@ function NotesController($state, $scope, NotesService){
   };
   $scope.edit = function(note) {
     $scope.note = note;
-  }
+  };
 }
 })();
