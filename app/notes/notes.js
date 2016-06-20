@@ -21,9 +21,11 @@ function notesConfig($stateProvider) {
     });
 }
 
-NotesController.$inject = ['$scope'];
-function NotesController($scope){
+NotesController.$inject = ['$state', '$scope'];
+function NotesController($state, $scope){
+  $state.go('notes.form');
   $scope.notes = [];
+  $scope.note = { title: '', body: '' };
   $scope.save = function() {
     $scope.notes.push($scope.note);
     $scope.note = { title: '', body: '' };
