@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('marvelousnote.notes', ['ui.router'])
-    .congig(notesConfig)
+    .config(notesConfig)
     .controller('NotesController', NotesController);
 
 notesConfig.$inject = ['$stateProvider'];
@@ -30,5 +30,8 @@ function NotesController($state, $scope){
     $scope.notes.push($scope.note);
     $scope.note = { title: '', body: '' };
   };
+  $scope.edit = function(note) {
+    $scope.note = note;
+  }
 }
 })();
