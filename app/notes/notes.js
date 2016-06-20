@@ -1,8 +1,11 @@
-angular.module('marvelousnote.notes', [
-  'ui.router'
-])
+(function() {
+  angular
+    .module('marvelousnote.notes', ['ui.router'])
+    .congig(notesConfig)
+    .controller('NotesController', NotesController);
 
-.config(function($stateProvider) {
+
+function notesConfig($stateProvider) {
   $stateProvider
 
     .state('notes', {
@@ -16,7 +19,13 @@ angular.module('marvelousnote.notes', [
       url: '/:noteId',
       templateUrl: 'notes/notes-form.html'
     });
-})
+}
 
-.controller('NotesController', function(){
-});
+function NotesController($scope){
+  $scope.notes = [];
+  $scope.save = function() {
+    $scope.notes.push($scope.note);
+    $scope.note = { title: '', body: '' };
+  };
+}
+})();
