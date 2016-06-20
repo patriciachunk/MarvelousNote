@@ -4,7 +4,7 @@
     .congig(notesConfig)
     .controller('NotesController', NotesController);
 
-
+notesConfig.$inject = ['$stateProvider'];
 function notesConfig($stateProvider) {
   $stateProvider
 
@@ -21,6 +21,7 @@ function notesConfig($stateProvider) {
     });
 }
 
+NotesController.$inject = ['$scope'];
 function NotesController($scope){
   $scope.notes = [];
   $scope.save = function() {
