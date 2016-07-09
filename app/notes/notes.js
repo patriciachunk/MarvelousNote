@@ -23,12 +23,12 @@
 
   NotesController.$inject = ['$state', '$scope', 'Flash', 'NotesService'];
   function NotesController($state, $scope, Flash, NotesService){
-    $state.go('notes.form');
 
     NotesService.getNotes()
-    .then(function() {
-      $scope.notes = NotesService.notes;
-    });
+      .then(function() {
+        $scope.notes = NotesService.notes;
+        $scope.note = NotesService.find($state.params.noteId);
+      });
 
     $scope.clearForm = function() {
       $scope.note = { title: '', body_html: '' };
@@ -60,10 +60,6 @@
       }
     };
 
-    $scope.edit = function(note) {
-      $scope.note = angular.copy(note);
-    };
-
     $scope.delete = function() {
       NotesService.delete($scope.note)
         .then(function() {
@@ -71,6 +67,6 @@
         });
     };
 
-    $scope.clearForm();
+    //$scope.clearForm();
   }
 })();
