@@ -1,6 +1,7 @@
 (function() {
   var app = angular.module('marvelousnote', [
     'ui.router',
+    'ngFlash',
     'marvelousnote.notes'
   ]);
 
