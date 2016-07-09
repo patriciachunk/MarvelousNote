@@ -2,6 +2,7 @@
   var app = angular.module('marvelousnote', [
     'ui.router',
     'ngFlash',
+    'textAngular',
     'marvelousnote.notes'
   ]);
 
