@@ -36,7 +36,12 @@
 
 
     $scope.save = function() {
-      $scope.notes.create($scope.note);
+      if ($scope.note._id) {
+        NotesService.update($scope.note);
+      }
+      else {
+        NotesService.create($scope.note);
+      }
       $scope.clearForm();
     };
 
