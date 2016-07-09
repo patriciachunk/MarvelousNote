@@ -28,13 +28,23 @@
     };
 
     service.update = function(note) {
-      var notesPromise = $http.put('https://meganote.herokuapp.com/notes', {
+      var notesPromise = $http.put('https://meganote.herokuapp.com/notes/' + note._id, {
         note: note
       });
 
       notesPromise.then(function(res) {
         service.removeById(res.data.note._id);
         service.notes.unshift(res.data.note);
+      });
+
+      return notesPromise;
+    };
+
+    service.delete = function(note) {
+      var notesPromise = $http.delete('https://meganote.herokuapp.com/notes/' + note._id);
+
+      notesPromise.then(function(res) {
+        service.removeById(res.data.note._id);
       });
 
       return notesPromise;

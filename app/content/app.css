@@ -1,5 +1,5 @@
 body {
-    
+
     font-family: Oxygen, Helvetica, Arial, sans-serif; }
 
  h1, h2, h3, h4, h5 {
@@ -33,8 +33,8 @@ body {
    color: #FE5F55; }
 
  i.fa-trash-o {
+   cursor: pointer;
    color: #ccc;
-   font-size: 150%;
    vertical-align: middle;
    margin-left: 1em; }
    i.fa-trash-o:hover {
