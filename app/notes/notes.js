@@ -38,14 +38,14 @@
     $scope.save = function() {
       if ($scope.note._id) {
         NotesService.update($scope.note)
-        .then(
-          function(res) {
-            $scope.note = res.data.note;
-            Flash.create('success', 'res.data.message');
-          },
-          function() {
-            Flash.create('danger', 'Oops! Something went wrong. ');
-          });
+          .then(
+            function(res) {
+              $scope.note = res.data.note;
+              Flash.create('success', res.data.message);
+            },
+            function() {
+              Flash.create('danger', 'Oops! Something went wrong.');
+            });
       }
       else {
         NotesService.create($scope.note)
@@ -55,7 +55,7 @@
               Flash.create('success', res.data.message);
             },
             function() {
-              Flash.create('danger', 'Oops! Something went wrong. ');
+              Flash.create('danger', 'Oops! Something went wrong.');
             });
       }
     };
