@@ -1,12 +1,12 @@
 (function() {
   angular
-    .module('marvelousnote.notes', ['ui.router'])
-    .config(notesConfig)
-    .controller('NotesController', NotesController);
+  .module('marvelousnote.notes', ['ui.router'])
+  .config(notesConfig)
+  .controller('NotesController', NotesController);
 
-notesConfig.$inject = ['$stateProvider'];
-function notesConfig($stateProvider) {
-  $stateProvider
+  notesConfig.$inject = ['$stateProvider'];
+  function notesConfig($stateProvider) {
+    $stateProvider
 
     .state('notes', {
       url: '/notes',
@@ -19,23 +19,23 @@ function notesConfig($stateProvider) {
       url: '/:noteId',
       templateUrl: 'notes/notes-form.html'
     });
-}
+  }
 
-NotesController.$inject = ['$state', '$scope', 'NotesService'];
-function NotesController($state, $scope, NotesService){
-  $state.go('notes.form');
-  NotesService.getNotes()
+  NotesController.$inject = ['$state', '$scope', 'NotesService'];
+  function NotesController($state, $scope, NotesService){
+    $state.go('notes.form');
+    NotesService.getNotes()
     .then(function() {
       $scope.notes = NotesService.notes;
     });
-  $scope.notes = [];
-  $scope.note = { title: '', body: '' };
-  $scope.save = function() {
-    $scope.notes.push($scope.note);
-    $scope.note = { title: '', body: '' };
-  };
-  $scope.edit = function(note) {
-    $scope.note = note;
-  };
-}
+    $scope.notes = [];
+    $scope.note = { title: '', body_html: '' };
+    $scope.save = function() {
+      $scope.notes.create($scope.note);
+      $scope.note = { title: '', body_html: '' };
+    };
+    $scope.edit = function(note) {
+      $scope.note = note;
+    };
+  }
 })();

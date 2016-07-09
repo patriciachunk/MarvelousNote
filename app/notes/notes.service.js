@@ -1,6 +1,6 @@
 (function() {
   angular.module('marvelousnote.notes')
-    .service('NotesService', NotesService);
+  .service('NotesService', NotesService);
 
   NotesService.$inject = ['$http'];
   function NotesService($http) {
@@ -13,6 +13,18 @@
       notesPromise.then(function(res) {
         service.notes = res.data;
       });
+      return notesPromise;
+    };
+
+    service.create = function(note) {
+      var notesPromise = $http.post('https://meganote.herokuapp.com/notes', {
+        note: note
+      });
+
+      notesPromise.then(function(res) {
+        service.notes.unshift(res.data.note);
+      });
+
       return notesPromise;
     };
   }
