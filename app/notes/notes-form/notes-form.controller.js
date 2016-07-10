@@ -22,7 +22,7 @@
         NotesService.update(vm.note)
           .then(
             function(res) {
-              vm.note = res.data.note;
+              vm.note = angular.copy(res.data.note);
               Flash.create('success', res.data.message);
               $state.go('notes.form', { noteId: vm.note._id });
             },
