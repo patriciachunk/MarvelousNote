@@ -1,3 +1,3 @@
 (function() {
-  angular.module('marvelousnote.notes', ['ui.router']);
+  angular.module('marvelousnote.notes');
 })();
