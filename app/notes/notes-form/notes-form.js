@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('marvelousnote.notes')
+  angular.module('marvelousnote.notesForm')
      .controller('NotesFormController', NotesFormController);
 
   NotesFormController.$inject = ['$state', '$scope', 'Flash', 'NotesService'];

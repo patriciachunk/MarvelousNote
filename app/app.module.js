@@ -4,7 +4,8 @@
     'ui.router',
     'ngFlash',
     'textAngular',
-    'marvelousnote.notes'
+    'marvelousnote.notes',
+    'marvelousnote.notesForm'
   ])
     .config(config);
 
