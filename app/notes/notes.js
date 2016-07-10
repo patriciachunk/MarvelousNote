@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('marvelousnote.notes', ['ui.router'])
+    .module('marvelousnote.notes')
     .config(notesConfig)
     .controller('NotesController', NotesController);
 
