@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   angular.module('marvelousnote.notes')
   .factory('NotesService', NotesService);
 

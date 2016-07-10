@@ -1,3 +1,4 @@
 (function() {
-  angular.module('marvelousnote.notes');
+  'use strict';
+  angular.module('marvelousnote.notes', []);
 })();

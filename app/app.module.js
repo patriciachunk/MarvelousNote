@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   angular.module('marvelousnote', [
     'ui.router',
     'ngFlash',
