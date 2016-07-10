@@ -1,5 +1,5 @@
 (function() {
-  angular.module('meganote.notes')
+  angular.module('marvelousnote.notes')
      .controller('NotesFormController', NotesFormController);
 
   NotesFormController.$inject = ['$state', '$scope', 'Flash', 'NotesService'];
@@ -40,6 +40,6 @@
         .then(function() {
           $scope.clearForm();
         });
-    };  
+    };
   }
 }());

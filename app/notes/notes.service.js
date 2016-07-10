@@ -5,14 +5,15 @@
   NotesService.$inject = ['$http'];
   function NotesService($http) {
     var service = this;
-
     service.notes = [];
 
     service.getNotes = function() {
       var notesPromise = $http.get('http://localhost:3030/');
+
       notesPromise.then(function(res) {
         service.notes = res.data;
       });
+
       return notesPromise;
     };
 
@@ -24,6 +25,7 @@
       notesPromise.then(function(res) {
         service.notes.unshift(res.data.note);
       });
+
       return notesPromise;
     };
 

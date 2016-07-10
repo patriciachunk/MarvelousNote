@@ -1,8 +1,8 @@
 (function() {
   angular
-  .module('marvelousnote.notes', ['ui.router'])
-  .config(notesConfig)
-  .controller('NotesController', NotesController);
+    .module('marvelousnote.notes', ['ui.router'])
+    .config(notesConfig)
+    .controller('NotesController', NotesController);
 
   notesConfig.$inject = ['$stateProvider'];
   function notesConfig($stateProvider) {
@@ -16,6 +16,7 @@
         notesLoaded: notesLoaded
       }
     })
+
     .state('notes.form', {
       url: '/:noteId',
       templateUrl: 'notes/notes-form.html',
