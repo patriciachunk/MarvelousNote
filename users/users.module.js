@@ -1,3 +1,3 @@
 {
-  angular.module('meganote.users', []);
+  angular.module('marvelousnote.users', []);
 }

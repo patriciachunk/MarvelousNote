@@ -1,5 +1,5 @@
 {
-  angular.module('meganote.users')
+  angular.module('marvelousnote.users')
      .service('CurrentUser', ['$window', $window => {
 
        class CurrentUser {

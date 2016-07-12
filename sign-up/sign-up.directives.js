@@ -1,6 +1,7 @@
 {
-  angular.module('meganote.signUp')
+  angular.module('marvelousnote.signUp')
   .directive('signUp', [
+    
     'UsersService',
     (UsersService) => {
 

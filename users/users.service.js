@@ -1,5 +1,5 @@
 {
-  angular.module('meganote.users')
+  angular.module('marvelousnote.users')
   .service('UsersService', [
     '$http',
     'API_BASE',

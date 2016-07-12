@@ -1,5 +1,5 @@
 {
-  angular.module('meganote.users')
+  angular.module('marvelousnote.users')
   .config(usersConfig);
 
   usersConfig.$inject = ['$stateProvider'];
