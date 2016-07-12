@@ -1,27 +1,34 @@
 {
   angular.module('meganote.users')
-     .directive('userLinks', [
+  .directive('userLinks', [
 
-       () => {
+    'CurrentUser',
+    (CurrentUser) => {
+      class UserLinksController {
+        user() {
+          return CurrentUser.get();
+        }
+        signedIn() {
+          return CurrentUser.signedIn();
+        }
+      }
 
-         class UserLinksController {
+      return {
+        scope: {},
+        controller: UserLinksController,
+        controllerAs: 'vm',
+        bindToController: true,
+        template: `
 
-         }
+        <div class="user-links">
+          <span ng-show="vm.signedIn()">
+            Signed in as {{ vm.user().name }}
+          </span>
+        </div>
 
-         return {
-           scope: {},
-           controller: UserLinksController,
-           controllerAs: 'vm',
-           bindToController: true,
-           template: `
+        `
+      };
+    }
 
-           <div class="user-links">
-             ** USER LINKS **
-           </div>
-
-           `
-         };
-       }
-
-     ]);
+  ]);
 }
