@@ -4,7 +4,9 @@
     'ngFlash',
     'textAngular',
     'marvelousnote.notes',
-    'marvelousnote.notesForm'
+    'marvelousnote.notesForm',
+    'marvelousnote.signUp',
+    'marvelousnote.users'
   ])
     .config(config);
 
