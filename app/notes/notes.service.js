@@ -64,7 +64,7 @@
     }
 
     function removeById(id) {
-      for (const i=0; i < service.notes.length; i++) {
+      for (let i=0; i < service.notes.length; i++) {
         if (service.notes[i]._id === id) {
           return service.notes.splice(i, 1);
         }
@@ -72,7 +72,7 @@
     }
 
     function find(id) {
-      for (const i=0; i < service.notes.length; i++) {
+      for (let i=0; i < service.notes.length; i++) {
         if (service.notes[i]._id === id) {
           return angular.copy(service.notes[i]);
         }
