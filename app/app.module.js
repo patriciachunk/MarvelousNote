@@ -1,5 +1,4 @@
-(function() {
-  'use strict';
+{
   angular.module('marvelousnote', [
     'ui.router',
     'ngFlash',
@@ -13,4 +12,4 @@
   function config($urlRouterProvider) {
     $urlRouterProvider.otherwise('/notes/');
   }
-})();
+}
