@@ -32,7 +32,7 @@
               <a ui-sref="sign-up" ng-click="vm.logout()">Logout</a>
             </span>
             <span ng-show="!vm.signedIn()">
-              <a ui-sref="sign-up">Sign up for Meganote today!</a>
+              <a ui-sref="sign-up">Sign up for MarvelousNote today!</a>
             </span>
           </div>
           `
