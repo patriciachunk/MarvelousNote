@@ -23,20 +23,19 @@
 
   function bundle() {
     return gulp.src(jsFiles)
-    .pipe(order([
-      'app/app.module.js',              // put the main module first
-      'app/**/*.module.js',             // followed by all other modules
-      'app/**/*.js'                     // and all other JS files
-    ], { base: './' }))
-    .pipe(plumber())                    // restart gulp on error
-    .pipe(sourcemaps.init())            // let sourcemaps watch this pipeline
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-                         // transpile into ES5 for browsers
-    .pipe(concat('bundle.js'))          // concatenate all JS files
-    .pipe(sourcemaps.write('.'))        // emit the .map file for debugging
-    .pipe(gulp.dest('app/content'));
+      .pipe(order([
+        'app/app.module.js',              // put the main module first
+        'app/**/*.module.js',             // followed by all other modules
+        'app/**/*.js'                     // and all other JS files
+      ], { base: './' }))
+      .pipe(plumber())                    // restart gulp on error
+      .pipe(sourcemaps.init())            // let sourcemaps watch this pipeline
+      .pipe(babel({
+        presets: ['es2015']
+      }))                                 // transpile into ES5 for browsers
+      .pipe(concat('bundle.js'))          // concatenate all JS files
+      .pipe(sourcemaps.write('.'))        // emit the .map file for debugging
+      .pipe(gulp.dest('app/content'));
   }
 
   function startWebServer() {

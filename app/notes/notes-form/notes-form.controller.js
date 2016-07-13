@@ -1,6 +1,6 @@
 {
   angular.module('marvelousnote.notesForm')
-  .controller('NotesFormController', NotesFormController);
+    .controller('NotesFormController', NotesFormController);
 
   NotesFormController.$inject = ['$state', 'Flash', 'NotesService'];
   function NotesFormController($state, Flash, NotesService) {
@@ -10,7 +10,7 @@
     vm.save = save;
     vm.destroy = destroy;
 
-    //////////////////////////
+    /////////////////
 
     function clearForm() {
       vm.note = { title: '', body_html: '' };
@@ -19,32 +19,32 @@
     function save() {
       if (vm.note._id) {
         NotesService.update(vm.note)
-        .then(
-          res => {
-            vm.note = angular.copy(res.data.note);
-            Flash.create('success', res.data.message);
-            $state.go('notes.form', { noteId: vm.note._id });
-          },
-          () => Flash.create('danger', 'Oops! Something went wrong.')
-        );
+          .then(
+            res => {
+              vm.note = angular.copy(res.data.note);
+              Flash.create('success', res.data.message);
+            },
+            () => Flash.create('danger', 'Oops! Something went wrong.')
+          );
       }
       else {
         NotesService.create(vm.note)
-        .then(
-          res => {
-            vm.note = res.data.note;
-            Flash.create('success', res.data.message);
-          },
-          () => Flash.create('danger', 'Oops! Something went wrong.')
-        );
+          .then(
+            res => {
+              vm.note = res.data.note;
+              Flash.create('success', res.data.message);
+              $state.go('notes.form', { noteId: vm.note._id });
+            },
+            () => Flash.create('danger', 'Oops! Something went wrong.')
+          );
       }
     }
 
     function destroy() {
       NotesService.destroy(vm.note)
-      .then(
-        () => vm.clearForm()
-      );
+        .then(
+          () => $state.go('notes.form', { noteId: undefined })
+        );
     }
   }
 }

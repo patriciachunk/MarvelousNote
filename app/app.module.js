@@ -6,6 +6,7 @@
     'marvelousnote.notes',
     'marvelousnote.notesForm',
     'marvelousnote.signUp',
+    'marvelousnote.signIn',
     'marvelousnote.users'
   ])
     .config(config);

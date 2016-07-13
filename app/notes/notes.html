@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <nav class="col-xs-4" if="sidebar">
-      <button class="btn btn-default" ui-sref="notes.form({ noteId: undefined })>
+    <nav class="col-xs-4" id="sidebar">
+      <button class="btn btn-default" ui-sref="notes.form({ noteId: undefined })">
         New Note
       </button>
-      <ul if="notes">
+      <ul id="notes">
         <li ng-repeat="note in vm.notes | orderBy: '-updated_at' track by $index">
           <a class="note" ui-sref="notes.form({ noteId: note._id })">
             <div class="note-title">{{ note.title }}</div>
