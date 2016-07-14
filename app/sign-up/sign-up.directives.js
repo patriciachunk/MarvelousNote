@@ -1,30 +1,47 @@
 {
   angular.module('marvelousnote.signUp')
-    .directive('signUp', [
+  .directive('signUp', [
 
-      '$state',
-      'UsersService',
-      ($state, UsersService) => {
+    '$state',
+    'Flash',
+    'UsersService',
+    ($state, Flash, UsersService) => {
 
-        class SignUpController {
-          constructor() {
-            this.user = {};
-          }
-          submit() {
-            UsersService.create(this.user)
-              .then(
-                () => $state.go('notes.form', { noteId: undefined })
-              );
-          }
+      let flash = false;
+      class SignUpController {
+        constructor() {
+          this.user = {};
         }
+        submit() {
+          if (Number.isInteger(flash)) {
+            Flash.dismiss(flash);
+            flash = false;
+          }
+          UsersService.create(this.user)
+          .then(
+            () => $state.go('notes.form', { noteId: undefined }),
 
-        return {
-          scope: {},
-          controller: SignUpController,
-          controllerAs: 'vm',
-          bindToController: true,
-          templateUrl: 'sign-up/sign-up.html',
-        };
+            (res) => {
+              let errors = '';
+              for (let error of res.data.errors) {
+                errors += `<li>${error}</li>`;
+              }
+              flash = Flash.create('danger', `
+              <p>Oops! Something went wrong.</p>
+              <ul>${errors}</ul>
+              `);
+            }
+          );
+        }
       }
-    ]);
+
+      return {
+        scope: {},
+        controller: SignUpController,
+        controllerAs: 'vm',
+        bindToController: true,
+        templateUrl: 'sign-up/sign-up.html',
+      };
+    }
+  ]);
 }
