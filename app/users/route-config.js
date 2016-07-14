@@ -13,6 +13,9 @@
         data: {
           title: 'Sign Up'
         },
+        onExit: ['Flash', (Flash) => {
+          Flash.clear();
+        }],
       })
 
       .state('sign-in', {
