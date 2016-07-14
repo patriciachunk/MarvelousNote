@@ -23,7 +23,7 @@
           controller: SignUpController,
           controllerAs: 'vm',
           bindToController: true,
-          templateUrl: '/sign-up/sign-up.html',
+          templateUrl: 'sign-up/sign-up.html',
         };
       }
     ]);

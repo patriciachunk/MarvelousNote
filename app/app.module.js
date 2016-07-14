@@ -9,10 +9,18 @@
     'marvelousnote.signIn',
     'marvelousnote.users'
   ])
-    .config(config);
+    .config(config)
+    .run(run);
 
   config.$inject = ['$urlRouterProvider'];
   function config($urlRouterProvider) {
     $urlRouterProvider.otherwise('/notes/');
+  }
+
+  run.$inject = ['$rootScope', '$state'];
+  function run($rootScope, $state) {
+    $rootScope.$on('$stateChangeSuccess', () => {
+      $rootScope.$state = $state;
+    });
   }
 }
