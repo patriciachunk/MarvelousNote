@@ -1,4 +1,3 @@
-
 {
   angular.module('marvelousnote.users')
     .config(usersConfig);

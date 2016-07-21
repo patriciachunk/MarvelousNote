@@ -4,11 +4,12 @@
     'ngFlash',
     'textAngular',
     'ng.httpLoader',
-    'marvelousnote.notes',
-    'marvelousnote.notesForm',
-    'marvelousnote.signUp',
-    'marvelousnote.signIn',
-    'marvelousnote.users'
+    'ngResource',
+    'meganote.notes',
+    'meganote.notesForm',
+    'meganote.signUp',
+    'meganote.signIn',
+    'meganote.users'
   ])
     .config(config)
     .run(run);
@@ -23,6 +24,10 @@
   function run($rootScope, $state) {
     $rootScope.$on('$stateChangeSuccess', () => {
       $rootScope.$state = $state;
+    });
+
+    $rootScope.$on('$stateChangeError', () => {
+      $state.go('sign-in');
     });
   }
 }

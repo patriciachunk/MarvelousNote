@@ -1,6 +1,6 @@
 {
   angular.module('marvelousnote.notes')
-  .factory('NotesService', NotesService);
+    .factory('NotesService', NotesService);
 
   NotesService.$inject = ['$http', 'API_BASE'];
   function NotesService($http, API_BASE) {
@@ -18,39 +18,34 @@
 
     return service;
 
-    //////////////////////////////
+    //////////////////////
 
     function getNotes() {
       const notesPromise = $http.get(apiURI);
 
       notesPromise
-      .then(res => service.notes = res.data);
+        .then(res => service.notes = res.data);
 
       return notesPromise;
     }
 
     function create(note) {
-      const notesPromise = $http.post(apiURI, {
-        note: note
-      });
+      const notesPromise = $http.post(apiURI, note);
 
       notesPromise
-         .then(res => service.notes.unshift(res.data.note));
-
+        .then(res => service.notes.unshift(res.data));
 
       return notesPromise;
     }
 
     function update(note) {
-      const notesPromise = $http.put(`${apiURI}${note._id}`, {
-        note: note
-      });
+      const notesPromise = $http.put(`${apiURI}${note._id}`, note);
 
       notesPromise
-         .then(res => {
-           service.removeById(res.data.note._id);
-           service.notes.unshift(res.data.note);
-         });
+        .then(res => {
+          service.removeById(res.data._id);
+          service.notes.unshift(res.data);
+        });
 
       return notesPromise;
     }
@@ -59,13 +54,13 @@
       const notesPromise = $http.delete(`${apiURI}${note._id}`);
 
       notesPromise
-        .then(res => service.removeById(res.data.note._id));
+        .then(res => service.removeById(res.data._id));
 
       return notesPromise;
     }
 
     function removeById(id) {
-      for (let i=0; i < service.notes.length; i) {
+      for (let i=0; i < service.notes.length; i++) {
         if (service.notes[i]._id === id) {
           return service.notes.splice(i, 1);
         }
@@ -73,7 +68,7 @@
     }
 
     function find(id) {
-      for (let i=0; i < service.notes.length; i) {
+      for (let i=0; i < service.notes.length; i++) {
         if (service.notes[i]._id === id) {
           return angular.copy(service.notes[i]);
         }

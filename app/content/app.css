@@ -1,6 +1,5 @@
  body {
-
-font-family: 'Pontano Sans', sans-serif;}
+  font-family: 'Pontano Sans', sans-serif;}
 
  h1, h2, h3, h4, h5 {
 font-family: 'Pontano Sans', sans-serif;
@@ -129,3 +128,6 @@ body .alert.alert-success {
    display: inline-block;
    vertical-align: middle;
  }
+ #sidebar form {
+  margin-top: 1rem;
+}
